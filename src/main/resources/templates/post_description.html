@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Course Management System</title>
+<link rel="stylesheet" 
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container my-2">
+		<nav class="navbar navbar-light navbar-fixed-top bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" th:href="@{/posts}">
+		    		<img th:src="@{/post-images/logo/alkemy_logo.jfif}" width="40" height="40" alt="" class="rounded">
+		    		Alkemy Blog
+		  		</a>
+		  		<ul class="nav navbar-nav navbar-right">
+					<li><a th:href="@{/post/new}" class="btn btn-primary navbar-btn" style="color: white">Add Post</a></li>
+				</ul>
+			</div>
+		</nav>
+		<h1 th:text="${post.title}"></h1>
+		<small class="text-muted">Created by <span th:text="${post.creator} + ' | ' + ${post.date}"></span></small>
+		<hr>
+		<div th:if="${has_image}">
+			<img th:src="${post.getPostImagePath()}" class="img-fluid img-thumbnail rounded" alt="Responsive image">
+			<br>
+			<br>
+		</div>
+		<p th:text="${post.content}"></p>
+		<hr>
+		<a th:href="@{/posts}">Go back</a>
+	</div>
+</body>
+</html>

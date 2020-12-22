@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Professor Management System</title>
+<link rel="stylesheet" 
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container my-2">
+		<nav class="navbar navbar-light navbar-fixed-top bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" th:href="@{/posts}">
+		    		<img th:src="@{/post-images/logo/alkemy_logo.jfif}" width="40" height="40" alt="" class="rounded">
+		    		Alkemy Blog
+		  		</a>
+		  		<ul class="nav navbar-nav navbar-right">
+					<li><a th:href="@{/post/new}" class="btn btn-primary navbar-btn" style="color: white">Add Post</a></li>
+				</ul>
+			</div>
+		</nav>
+		<h1>Update Post</h1>
+		<hr>
+		<form action="#" th:action="@{/savePost}" th:object = "${post}" method="post">
+			<div class="form-row">
+				<input type="hidden" th:field = "*{id}" />
+				<div class="col-md-4 mb-3">
+					<input type="text" th:field = "*{creator}" placeholder="Creator" class="form-control">
+				</div>
+				<div class="col-md-4 mb-3">
+					<input type="text" th:field = "*{title}" placeholder="Title" class="form-control" required>
+				</div>
+				<div class="col-md-4 mb-3">
+					<select th:field = "*{category}" class="form-control">
+						<option value="">Choose category</option>
+						<option th:value="Economy" th:text="Economy"></option>
+						<option th:value="Politics" th:text="Politics"></option>
+						<option th:value="Science" th:text="Science"></option>
+					</select>
+				</div>
+			</div>
+			<h4>Content</h4>
+   			<textarea th:field = "*{content}" class="form-control" id="postContentText" rows="10" required></textarea>
+			<br>
+			<button type="submit" class="btn btn-info col-2">Update Post</button>
+		</form>
+		
+		<hr>
+		
+		<a th:href="@{/posts}">Go back</a>
+	</div>
+</body>
+</html>

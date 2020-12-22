@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Blog Home</title>
+<link rel="stylesheet" 
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container my-2">
+	<nav class="navbar navbar-light navbar-fixed-top bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/posts}">
+	    		<img th:src="@{/post-images/logo/alkemy_logo.jfif}" width="40" height="40" alt="" class="rounded">
+	    		Alkemy Blog
+	  		</a>
+	  		<ul class="nav navbar-nav navbar-right">
+				<li><a th:href="@{/post/new}" class="btn btn-primary navbar-btn" style="color: white">Add Post</a></li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<div class="alert alert-success" role="alert" th:if="${msgRegister}" th:utext="${msgRegister}"></div>
+	<div class="alert alert-danger" role="alert" th:if="${msgDeleted}" th:utext="${msgDeleted}"></div>
+		<table class = "table table-hover table-responsive-md" style="text-align: center">
+			<thead class="thead-dark">
+				<tr>
+					<th>Title</th>
+					<th>Category</th>
+					<th>Creation Date</th>
+					<th>Created by</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="post : ${listPosts}">
+					<td th:text="${post.title}"></td>
+					<td th:text="${post.category}"></td>
+					<td th:text="${post.date}"></td>
+					<td th:text="${post.creator}"></td>
+					<td>
+					<a th:href="@{/post/{id}(id=${post.id})}" class="btn btn-info">View Post</a>
+					<a th:href="@{/post/update/{id}(id=${post.id})}" class="btn btn-success">Update</a>
+					<a th:href="@{/post/delete/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
+					</td>					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>
