@@ -31,8 +31,6 @@ public class Post {
 	@Column(name="content", length=512)
 	private String content;
 	
-//	private BufferedImage image;
-	
 	@Column(name = "image", nullable = true)
 	private String image;
 	
@@ -42,6 +40,17 @@ public class Post {
 	@Column(name = "date")
 	private LocalDate date;
 	
+	public Post(int id, String title, String creator, String content, String image, String category) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.creator = creator;
+		this.content = content;
+		this.image = image;
+		this.category = category;
+		this.date = LocalDate.now();
+	}
+
 	public Post() {
 		super();
 		this.date = LocalDate.now();

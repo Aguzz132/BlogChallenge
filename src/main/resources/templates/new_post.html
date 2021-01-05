@@ -35,9 +35,13 @@
 					<div class="col-md-4 mb-3">
 						<select th:field = "*{category}" class="form-control">
 							<option value="">Choose category</option>
+							<option th:value="Art" th:text="Art"></option>
 							<option th:value="Economy" th:text="Economy"></option>
+							<option th:value="Education" th:text="Education"></option>
+							<option th:value="Health" th:text="Health"></option>
 							<option th:value="Politics" th:text="Politics"></option>
 							<option th:value="Science" th:text="Science"></option>
+							<option th:value="Technology" th:text="Technology"></option>
 						</select>
 					</div>
 					<div class="col-md-4 mb-3">

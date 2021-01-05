@@ -24,8 +24,12 @@ import com.blog.service.PostService;
 @Controller
 public class PostController {
 
-	@Autowired
 	private PostService postService;
+	
+	@Autowired
+	public PostController(PostService postService) {
+		this.postService = postService;
+	}
 	
 	@GetMapping({"/","/posts"})
 	public String viewHome(Model model) {
